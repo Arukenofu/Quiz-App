@@ -81,10 +81,6 @@ watch(() => store.topicID, () => {
     </button>
   </div>
 
-  <p>
-    Hello world
-  </p>
-
   <h1>Выбор уровня</h1>
   <transition name="v">
     <div class="card" v-if="playingAnimation">
