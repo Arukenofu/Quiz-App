@@ -12,10 +12,12 @@ onMounted(async () => {
 const {correctAnswers, questsList} = useQuestsStore()
 
 const rate = computed(() => {
-  if (correctAnswers < 5) {
+  const rating = correctAnswers / questsList.length
+
+  if (rating < 0.4) {
     return 'Плохо.'
   }
-  if (correctAnswers < 10) {
+  if (rating < 0.7) {
     return 'Неплохо'
   }
   return 'Отлично!'

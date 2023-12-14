@@ -3,6 +3,7 @@ import {useQuestsStore} from "./stores/store";
 import {useRoute} from "vue-router";
 import {provide, ref} from "vue";
 import Controller from "@/components/ControllerComponent.vue";
+import router from "@/router/index.js";
 
 const route = useRoute();
 
@@ -31,15 +32,13 @@ const globalMusic = ref();
     <component :is="Component" />
   </RouterView>
 
-  <div class="left-bar" v-if="route.name !== 'contact' && route.name !== 'social'">
+  <div class="left-bar" v-if="route.name !== 'contact' && route.name !== 'social' && route.name !== 'auth'">
     <div class="material-symbols-outlined" @click="playing =! playing; toggleMusic()">
       {{playing ? 'volume_up' : 'volume_off'}}
     </div>
   </div>
-  <controller v-if="route.name !== 'results'" />
-  <div>
 
-  </div>
+  <controller v-if="route.name !== 'results' && route.name !== 'auth'" />
 </template>
 
 <style lang="scss" scoped>

@@ -6,27 +6,27 @@ export const useTopics = defineStore('useTopicsStore', () => {
     const topics = reactive([
         {
             name: 'Философия',
-            image: '../public/topics/philosophy.png'
+            image: 'http://localhost:3000/images/philosophy.png'
         },
         {
             name: 'Математика',
-            image: '../public/topics/math.png'
+            image: 'http://localhost:3000/images/math.png'
         },
         {
             name: 'Физика',
-            image: '../public/topics/phyzics.png'
+            image: 'http://localhost:3000/images/phyzics.png'
         },
         {
             name: 'География',
-            image: '../public/topics/geography.png'
+            image: 'http://localhost:3000/images/geography.png'
         },
         {
             name: 'Английский',
-            image: '../public/topics/english.png'
+            image: 'http://localhost:3000/images/english.png'
         },
         {
             name: 'История',
-            image: '../public/topics/history.png'
+            image: 'http://localhost:3000/images/history.png'
         }
     ])
 

@@ -3,7 +3,6 @@ import {useQuestsStore} from "@/stores/store.js";
 import {useRoute} from "vue-router";
 
 const route = useRoute();
-
 </script>
 
 
@@ -11,6 +10,12 @@ const route = useRoute();
   <div class="controller" v-if="useQuestsStore().currentQuestId === 0 && route.name !== 'answer' && route.name !== 'quest'">
     <router-link to="/">
       Выбор уровня
+    </router-link>
+    <router-link to="/account">
+      Аккаунт
+    </router-link>
+    <router-link to="/settings">
+      Настройки
     </router-link>
   </div>
 </template>

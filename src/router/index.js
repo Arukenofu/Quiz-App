@@ -5,6 +5,9 @@ import RESULTS from "../views/RESULTS.vue";
 import CONTACT from "../views/CONTACT.vue";
 import SOCIAL from "../views/SOCIAL.vue";
 import SELECT from "@/views/SELECTQUEST.vue";
+import ACCOUNT from "@/views/ACCOUNT.vue";
+import SETTINGS from "@/views/SETTINGS.vue";
+import AUTH from "@/views/AUTH.vue";
 
 const index = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -38,6 +41,21 @@ const index = createRouter({
       path: '/social',
       name: 'social',
       component: SOCIAL
+    },
+    {
+      path: '/account',
+      name: 'account',
+      component: ACCOUNT
+    },
+    {
+      path: '/settings',
+      name: 'settings',
+      component: SETTINGS
+    },
+    {
+      path: '/auth',
+      name: 'auth',
+      component: AUTH
     }
   ]
 })

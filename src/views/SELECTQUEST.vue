@@ -9,7 +9,6 @@ const store = useTopics();
 
 const playingAnimation = ref(true);
 
-
 const isError = ref(false)
 const errorMessage = ref('')
 
@@ -41,10 +40,10 @@ const play = async () => {
         if (error) {
           isError.value = true;
 
-          const elem = document.querySelectorAll("#app *:not(.error-modal)");
-          for (let i = 0; i < elem.length; i++) {
-            elem[i].style.filter = 'blur(5px)';
-          }
+          // const elem = document.querySelectorAll("#app *:not(.error-modal)");
+          // for (let i = 0; i < elem.length; i++) {
+          //   elem[i].style.filter = 'blur(5px)';
+          // }
 
           errorMessage.value =
               '<b>Код ошибки: 500 - Внутренняя ошибка сервера</b> <br>' +
@@ -67,18 +66,20 @@ watch(() => store.topicID, () => {
 </script>
 
 <template>
-  <div class="error-modal" v-if="isError">
-    <h2>Ошибка!</h2>
+  <div class="modal-bg" v-if="isError">
+    <div class="error-modal">
+      <h2>Ошибка!</h2>
 
-    <span class="material-symbols-outlined">
+      <span class="material-symbols-outlined">
       warning
     </span>
 
-    <p v-html="errorMessage" />
+      <p v-html="errorMessage" />
 
-    <button @click="reload()">
-      Перезагрузить страницу
-    </button>
+      <button @click="reload()">
+        Перезагрузить страницу
+      </button>
+    </div>
   </div>
 
   <h1>Выбор уровня</h1>
@@ -102,55 +103,63 @@ watch(() => store.topicID, () => {
 </template>
 
 <style scoped lang="scss">
-.error-modal {
+.modal-bg {
   z-index: 2;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #4c4360;
-  width: 30%;
-  height: 59%;
-  border-radius: 9px;
-  padding: 15px 25px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(1, 1, 1, 0.4);
 
-  h2 {
-    margin-top: 1.2rem;
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: .5rem;
-  }
+  .error-modal {
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #4c4360;
+    width: 30%;
+    height: 59%;
+    border-radius: 9px;
+    padding: 15px 25px;
 
-  span {
-    display: table;
-    margin: 0 auto 10px auto;
-    font-size: 7rem;
-    color: rgba(245, 30, 30, 1);
-  }
+    h2 {
+      margin-top: 1.2rem;
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: .5rem;
+    }
 
-  p {
-    display: block;
-    margin: 0 auto 25px auto;
-    width: 330px;
-    padding: 10px 10px;
-    border: 2px solid rgba(245, 30, 30, 0.5);
-    border-radius: 3px;
-    background-color: rgba(245, 30, 30, 0.2);
-    font-size: .8rem;
-  }
+    span {
+      display: table;
+      margin: 0 auto 10px auto;
+      font-size: 7rem;
+      color: rgba(245, 30, 30, 1);
+    }
 
-  button {
-    display: flex;
-    margin: 0 auto;
-    padding: 12px 30px;
-    cursor: pointer;
-    border-radius: 3px;
-    background-color: #883e3e;
-    border: 2px solid #b92b2b;
-    color: #FFFFFF;
+    p {
+      display: block;
+      margin: 0 auto 25px auto;
+      width: 330px;
+      padding: 10px 10px;
+      border: 2px solid rgba(245, 30, 30, 0.5);
+      border-radius: 3px;
+      background-color: rgba(245, 30, 30, 0.2);
+      font-size: .8rem;
+    }
 
-    &:active {
-      opacity: .7;
+    button {
+      display: flex;
+      margin: 0 auto;
+      padding: 12px 30px;
+      cursor: pointer;
+      border-radius: 3px;
+      background-color: #883e3e;
+      border: 2px solid #b92b2b;
+      color: #FFFFFF;
+
+      &:active {
+        opacity: .7;
+      }
     }
   }
 }
